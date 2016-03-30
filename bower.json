@@ -1,0 +1,19 @@
+{
+  "name": "browserify-webapp-template",
+  "description": "Template for generating basic web application layout with configured grunt and browserify",
+  "main": "",
+  "authors": [
+    "Andrey Bulat"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/VeskeR/browserify-webapp-template",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {}
+}
