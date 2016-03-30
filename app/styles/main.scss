@@ -36,6 +36,19 @@ body {
     padding: 1rem 0;
     background-color: $white;
     box-shadow: $material-shadow-1;
+
+    &__inner {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: center;
+      align-content: center;
+      margin: 0 2rem;
+
+      @import 'game-field';
+      @import 'legend';
+    }
   }
 
   .footer {
