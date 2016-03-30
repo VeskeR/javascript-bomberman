@@ -1,17 +1,17 @@
 {
-  "name": "browserify-webapp-template",
-  "version": "1.0.0",
-  "description": "Template for generating basic web application layout with configured grunt and browserify",
+  "name": "javascript-bomberman",
+  "version": "0.0.0",
+  "description": "Front-end realization of bomberman game.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/VeskeR/browserify-webapp-template.git"
+    "url": "git+https://github.com/VeskeR/javascript-bomberman.git"
   },
   "author": "Andrey Bulat",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/VeskeR/browserify-webapp-template/issues"
+    "url": "https://github.com/VeskeR/javascript-bomberman/issues"
   },
-  "homepage": "https://github.com/VeskeR/browserify-webapp-template#readme",
+  "homepage": "https://github.com/VeskeR/javascript-bomberman#readme",
   "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^6.3.3",
