@@ -1,0 +1,19 @@
+{
+  "name": "javascript-bomberman",
+  "description": "Front-end realization of bomberman game",
+  "main": "",
+  "authors": [
+    "Andrey Bulat"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/VeskeR/javascript-bomberman",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {}
+}
