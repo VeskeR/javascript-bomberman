@@ -1,3 +1,5 @@
+var gameManager = require('./game-manager');
+
 function GameObject() {
   this._timeCreated = 0;
   this._lastUpdate = 0;
@@ -22,10 +24,10 @@ GameObject.prototype = {
     this._addToGameManager();
   },
   _addToGameManager: function () {
-
+    gameManager.addGameObject(this);
   },
   _removeFromGameManager: function () {
-
+    gameManager.removeGameObject(this);
   }
 };
 
