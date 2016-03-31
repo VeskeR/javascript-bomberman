@@ -24,12 +24,119 @@
       &::after {
         content: '';
         display: block;
-        padding-bottom: 8.33%;
+      }
+
+      &[data-rows-count='5'] {
+        &::after {
+          padding-bottom: 20%;
+        }
+      }
+
+      &[data-rows-count='6'] {
+        &::after {
+          padding-bottom: 16.66%;
+        }
+      }
+
+      &[data-rows-count='7'] {
+        &::after {
+          padding-bottom: 14.28%;
+        }
+      }
+
+      &[data-rows-count='8'] {
+        &::after {
+          padding-bottom: 12.5%;
+        }
+      }
+
+      &[data-rows-count='9'] {
+        &::after {
+          padding-bottom: 11.11%;
+        }
+      }
+
+      &[data-rows-count='10'] {
+        &::after {
+          padding-bottom: 10%;
+        }
+      }
+
+      &[data-rows-count='11'] {
+        &::after {
+          padding-bottom: 9.09%;
+        }
+      }
+
+      &[data-rows-count='12'] {
+        &::after {
+          padding-bottom: 8.33%;
+        }
+      }
+
+      &[data-rows-count='13'] {
+        &::after {
+          padding-bottom: 7.69%;
+        }
+      }
+
+      &[data-rows-count='14'] {
+        &::after {
+          padding-bottom: 7.14%;
+        }
+      }
+
+      &[data-rows-count='15'] {
+        &::after {
+          padding-bottom: 6.66%;
+        }
       }
     }
 
     &__cell {
-      width: 8.33%;
+      &[data-cells-count='5'] {
+        width: 20%;
+      }
+
+      &[data-cells-count='6'] {
+        width: 16.66%;
+      }
+
+      &[data-cells-count='7'] {
+        width: 14.28%;
+      }
+
+      &[data-cells-count='8'] {
+        width: 12.5%;
+      }
+
+      &[data-cells-count='9'] {
+        width: 11.11%;
+      }
+
+      &[data-cells-count='10'] {
+        width: 10%;
+      }
+
+      &[data-cells-count='11'] {
+        width: 9.09%;
+      }
+
+      &[data-cells-count='12'] {
+        width: 8.33%;
+      }
+
+      &[data-cells-count='13'] {
+        width: 7.69%;
+      }
+
+      &[data-cells-count='14'] {
+        width: 7.14%;
+      }
+
+      &[data-cells-count='15'] {
+        width: 6.66%;
+      }
 
       &--wall {
         background-color: $wall-color;
