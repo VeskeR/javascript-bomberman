@@ -1,12 +1,10 @@
 var GameObject = require('./game-object');
 var Transform = require('./transform');
 
-function Bomberman(settings) {
+function Bomberman(maxBombs) {
   GameObject.apply(this, arguments);
 
-  settings = settings || {};
-
-  this._maxBombs = settings.maxBombs || 1;
+  this._maxBombs = maxBombs || 1;
   this._bombs = 0;
 
   new Transform(this);
