@@ -1,7 +1,7 @@
 var CellTypes = {
   WALL: 0,
   GRASS: 1,
-  BRICK: 2,
+  BARRIER: 2,
   getCellTypeName: function (num) {
     num = num || 0;
 

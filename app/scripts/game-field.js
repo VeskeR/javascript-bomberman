@@ -7,6 +7,9 @@ function GameField(target) {
   this._target = target || $('body');
   this._field = [];
   this._$field = null;
+
+  this._barriersDensityDefault = 0.4;
+  this._barriersDensity = this._barriersDensityDefault;
 }
 
 GameField.prototype = Object.create(GameObject.prototype);
@@ -23,23 +26,41 @@ $.extend(GameField.prototype, {
   appendFieldToTarget: function () {
     this._target.append(this._$field);
   },
+  getBarriersDensity: function () {
+    return this._barriersDensity;
+  },
+  setBarriersDensity: function (newDensity) {
+    this._barriersDensity = newDensity && newDensity >= 0 && newDensity <= 1 ?
+                            newDensity :
+                            this._barriersDensityDefault;
+  },
   _generateDigitalField: function (n, m) {
     var field = [];
 
     for (var i = 0; i < n; i++) {
       field.push([]);
       for (var j = 0; j < m; j++) {
-        var cellType;
-        if (i === 0 || i === n - 1 || j === 0 || j === m - 1) {
-          cellType = CellTypes.WALL;
-        } else {
-          cellType = CellTypes.GRASS;
-        }
+        var cellType = this._generateDigitalCell(n, m, i, j);
         field[i].push(cellType);
       }
     }
 
     this._field = field;
+  },
+  _generateDigitalCell: function (n, m, i, j) {
+    if (i === 0 || i === n - 1 || j === 0 || j === m - 1) {
+      cellType = CellTypes.WALL;
+    } else {
+      var r = Math.random();
+      console.log(r);
+      if (r < this._barriersDensity) {
+        cellType = CellTypes.BARRIER;
+      } else {
+        cellType = CellTypes.GRASS;
+      }
+    }
+
+    return cellType;
   },
   _generateHtmlField: function () {
     var $field = $('<div></div>');
