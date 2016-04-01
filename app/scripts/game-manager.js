@@ -39,7 +39,9 @@ GameManager.prototype = {
     setTimeout(function () {
       self._lastUpdate = Date.now();
       self._gameObjects.forEach(function (go) {
-        go.update();
+        if (go.update && typeof go.update === 'function') {
+          go.update();
+        }
       });
       self._update();
     }, delta);
