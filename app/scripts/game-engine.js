@@ -14,6 +14,12 @@ function GameEngine() {
 }
 
 $.extend(GameEngine.prototype, {
+  getGameObjects: function () {
+    return this._gameObjects;
+  },
+  getUpdatableGameObjects: function () {
+    return this._updatableGameObjects;
+  },
   addGameObject: function (object) {
     this._gameObjects.push(object);
     this._newGameObjects.push(object);
