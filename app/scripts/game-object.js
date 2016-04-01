@@ -9,11 +9,6 @@ function GameObject() {
 }
 
 GameObject.prototype = {
-  update: function () {
-    var currentTime = Date.now();
-    this._lastUpdateDelta = currentTime - this._lastUpdate;
-    this._lastUpdate = currentTime;
-  },
   destroy: function () {
     this._removeFromGameManager();
   },
@@ -28,6 +23,11 @@ GameObject.prototype = {
   },
   _removeFromGameManager: function () {
     gameManager.removeGameObject(this);
+  },
+  _update: function () {
+    var currentTime = Date.now();
+    this._lastUpdateDelta = currentTime - this._lastUpdate;
+    this._lastUpdate = currentTime;
   }
 };
 
