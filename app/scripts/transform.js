@@ -1,19 +1,26 @@
-var asTransform = (function() {
-  function move(vector) {
-    this.x += vector.x;
-    this.y += vector.y;
-    this.z += vector.z;
+var Component = require('./component');
+
+function Transform(object, position) {
+  Component.apply(this, Array.prototype.concat.apply(['Transform'], arguments));
+
+  position = position || {};
+
+  this.position = {
+    x: position.x || 0,
+    y: position.y || 0,
+    z: position.z || 0,
   }
+}
 
-  return function() {
-    this.x = 0;
-    this.y = 0;
-    this.z = 0;
+Transform.prototype = Object.create(Component.prototype);
+Transform.prototype.constructor = Component;
 
-    this.move = move;
+$.extend(Transform.prototype, {
+  move: function (vector) {
+    this.position.x += vector.x;
+    this.position.y += vector.y;
+    this.position.z += vector.z;
+  }
+});
 
-    return this;
-  };
-})();
-
-module.exports = asTransform;
+module.exports = Transform;

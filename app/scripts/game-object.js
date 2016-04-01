@@ -1,4 +1,4 @@
-var gameManager = require('./game-manager');
+var gameEngine = require('./game-engine');
 
 function GameObject() {
   this._timeCreated = 0;
@@ -9,25 +9,25 @@ function GameObject() {
 }
 
 GameObject.prototype = {
-  update: function () {
-    var currentTime = Date.now();
-    this._lastUpdateDelta = currentTime - this._lastUpdate;
-    this._lastUpdate = currentTime;
-  },
   destroy: function () {
-    this._removeFromGameManager();
+    this._removeFromGameEngine();
   },
   _controller: function () {
     this._timeCreated = Date.now();
     this._lastUpdate = this._timeCreated;
 
-    this._addToGameManager();
+    this._addToGameEngine();
   },
-  _addToGameManager: function () {
-    gameManager.addGameObject(this);
+  _addToGameEngine: function () {
+    gameEngine.addGameObject(this);
   },
-  _removeFromGameManager: function () {
-    gameManager.removeGameObject(this);
+  _removeFromGameEngine: function () {
+    gameEngine.removeGameObject(this);
+  },
+  _update: function () {
+    var currentTime = Date.now();
+    this._lastUpdateDelta = currentTime - this._lastUpdate;
+    this._lastUpdate = currentTime;
   }
 };
 
