@@ -10,6 +10,13 @@ function GameField(target) {
 
   this._barriersDensityDefault = 0.4;
   this._barriersDensity = this._barriersDensityDefault;
+
+  this._spawnPositions = [
+    function (n, m, i, j) { return (i === 1 && (j === 1 || j === 2)) || (i === 2 && j === 1); },
+    function (n, m, i, j) { return (i === 1 && (j === m - 2 || j === m - 3)) || (i === 2 && j === m - 2); },
+    function (n, m, i, j) { return (i === n - 2 && (j === 1 || j === 2)) || (i === n - 3 && j === 1); },
+    function (n, m, i, j) { return (i === n - 2 && (j === m - 2 || j === m - 3)) || (i === n - 3 && j === m - 2); }
+  ]
 }
 
 GameField.prototype = Object.create(GameObject.prototype);
@@ -50,9 +57,10 @@ $.extend(GameField.prototype, {
   _generateDigitalCell: function (n, m, i, j) {
     if (i === 0 || i === n - 1 || j === 0 || j === m - 1) {
       cellType = CellTypes.WALL;
+    } else if (this._isSpawnPosition(n, m, i, j)) {
+      cellType = CellTypes.GRASS;
     } else {
       var r = Math.random();
-      console.log(r);
       if (r < this._barriersDensity) {
         cellType = CellTypes.BARRIER;
       } else {
@@ -61,6 +69,11 @@ $.extend(GameField.prototype, {
     }
 
     return cellType;
+  },
+  _isSpawnPosition: function (n, m, i, j) {
+    return this._spawnPositions.some(function (spawn) {
+      return spawn(n, m, i, j);
+    });
   },
   _generateHtmlField: function () {
     var $field = $('<div></div>');
