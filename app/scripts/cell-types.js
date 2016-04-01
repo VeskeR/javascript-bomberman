@@ -1,16 +1,16 @@
-var cellTypes = {
+var CellTypes = {
   WALL: 0,
   GRASS: 1,
   BRICK: 2,
-  getCellType: function (num) {
+  getCellTypeName: function (num) {
     num = num || 0;
-    
-    for (var type in cellTypes) {
-      if (cellTypes[type] === num) {
-        return type;
+
+    for (var typeName in CellTypes) {
+      if (typeof typeName !== 'function' && CellTypes[typeName] === num) {
+        return typeName;
       }
     }
   }
 }
 
-module.exports = cellTypes;
+module.exports = CellTypes;

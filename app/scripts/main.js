@@ -10,3 +10,4 @@ window.gameEngine = gameEngine;
 window.gameManager = gameManager;
 
 new Bomberman();
+new GameField();
