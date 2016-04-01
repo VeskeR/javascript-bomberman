@@ -9,7 +9,7 @@ function Component(name, object) {
   if (object && typeof object === 'object') {
     this._object = object;
   } else {
-    throw new TypeError('Component: object to inject component into must be specified.');
+    throw new TypeError('Component ' + this._name + ': object to inject component into must be specified.');
   }
 
   this._controller();
