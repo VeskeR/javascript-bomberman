@@ -26,6 +26,12 @@
         display: block;
       }
 
+      &[data-rows-count='4'] {
+        &::after {
+          padding-bottom: 25%;
+        }
+      }
+
       &[data-rows-count='5'] {
         &::after {
           padding-bottom: 20%;
@@ -94,6 +100,10 @@
     }
 
     &__cell {
+      &[data-cells-count='5'] {
+        width: 25%;
+      }
+
       &[data-cells-count='5'] {
         width: 20%;
       }
