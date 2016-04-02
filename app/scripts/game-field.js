@@ -1,5 +1,5 @@
 var GameObject = require('./game-object');
-var CellTypes = require('./cell-types');
+var settings = require('./settings');
 
 function GameField(target) {
   GameObject.apply(this, arguments);
@@ -56,15 +56,15 @@ $.extend(GameField.prototype, {
   },
   _generateDigitalCell: function (n, m, i, j) {
     if (i === 0 || i === n - 1 || j === 0 || j === m - 1) {
-      cellType = CellTypes.WALL;
+      cellType = settings.cellTypes.WALL;
     } else if (this._isSpawnPosition(n, m, i, j)) {
-      cellType = CellTypes.GRASS;
+      cellType = settings.cellTypes.GRASS;
     } else {
       var r = Math.random();
       if (r < this._barriersDensity) {
-        cellType = CellTypes.BARRIER;
+        cellType = settings.cellTypes.BARRIER;
       } else {
-        cellType = CellTypes.GRASS;
+        cellType = settings.cellTypes.GRASS;
       }
     }
 
@@ -109,7 +109,7 @@ $.extend(GameField.prototype, {
   _generateHtmlFieldCell: function (cellType) {
     var $cell = $('<div></div>');
     $cell.addClass('game-field__cell');
-    $cell.attr('data-cell-type', CellTypes.getCellTypeName(cellType).toLowerCase());
+    $cell.attr('data-cell-type', settings.cellTypes.getCellTypeName(cellType).toLowerCase());
     return $cell;
   }
 });
