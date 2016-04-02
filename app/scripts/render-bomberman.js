@@ -1,4 +1,4 @@
-var Render = require('./component');
+var Render = require('./render');
 
 function RenderBomberman(object, target) {
   Render.call(this, 'RenderBomberman', object);

@@ -1,5 +1,7 @@
 var GameObject = require('./game-object');
 var Transform = require('./transform');
+var RenderBomberman = require('./render-bomberman');
+var settings = require('./settings');
 
 function Bomberman(maxBombs) {
   GameObject.apply(this, arguments);
@@ -8,6 +10,7 @@ function Bomberman(maxBombs) {
   this._bombs = 0;
 
   new Transform(this);
+  new RenderBomberman(this, settings.gameFieldTarget);
 }
 
 Bomberman.prototype = Object.create(GameObject.prototype);

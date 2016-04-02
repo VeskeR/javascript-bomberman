@@ -1,11 +1,12 @@
 var GameObject = require('./game-object');
 var GameField = require('./game-field');
 var Bomberman = require('./bomberman');
+var settings = require('./settings');
 
 function GameManager() {
   GameObject.apply(this, arguments);
 
-  this._fieldTarget = $('.game-field-wrapper');
+  this._fieldTarget = settings.gameFieldTarget;
 
   this._gameField = new GameField(this._fieldTarget);
   this._player = new Bomberman();
