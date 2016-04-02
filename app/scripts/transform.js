@@ -1,7 +1,7 @@
 var Component = require('./component');
 
 function Transform(object, position) {
-  Component.apply(this, Array.prototype.concat.apply(['Transform'], arguments));
+  Component.call(this, 'Transform', object);
 
   position = position || {};
 
