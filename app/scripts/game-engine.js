@@ -67,6 +67,6 @@ $.extend(GameEngine.prototype, {
   }
 });
 
-var GameEngine = new GameEngine();
+var gameEngine = new GameEngine();
 
-module.exports = GameEngine;
+module.exports = gameEngine;
