@@ -8,7 +8,7 @@ function GameField(target) {
   this._field = [];
   this._$field = null;
 
-  this._barriersDensityDefault = 0.4;
+  this._barriersDensityDefault = 0.5;
   this._barriersDensity = this._barriersDensityDefault;
 
   this._spawnPositions = [
