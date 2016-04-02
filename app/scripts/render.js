@@ -30,17 +30,28 @@ $.extend(Render.prototype, {
   removeElementFromTarget: function () {
     this._element.remove();
   },
-  render: function (n, m, i, j) {
+  render: function (n, m, x, y, w, h) {
+    n = n || 1;
+    m = m || 1;
+    if (!x) x = 0;
+    if (!y) y = 0;
+    w = w || 1;
+    h = h || 1;
+
     this._element.css({
-      left: i / n + '%',
-      top: j / m + '%'
+      left: x / m * 100 + '%',
+      top: y / n * 100 + '%',
+      width: w * 100 / m + '%',
+      height:  h * 100 / n + '%'
     });
   },
   _configureElement: function () {
     this._element.css({
       position: 'absolute',
       left: 0,
-      top: 0
+      top: 0,
+      width: 0,
+      height: 0
     });
   }
 });

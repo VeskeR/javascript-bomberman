@@ -1,12 +1,11 @@
 var GameObject = require('./game-object');
 var settings = require('./settings');
 
-function GameField(target) {
+function GameField(gameField) {
   GameObject.apply(this, arguments);
 
-  this._target = target || $('body');
+  this._$field = gameField || $('body');
   this._field = [];
-  this._$field = null;
 
   this._barriersDensityDefault = 0.5;
   this._barriersDensity = this._barriersDensityDefault;
@@ -30,8 +29,11 @@ $.extend(GameField.prototype, {
     this._generateDigitalField(n, m);
     this._generateHtmlField();
   },
-  appendFieldToTarget: function () {
-    this._target.append(this._$field);
+  getFieldWidth: function () {
+    return this._field[0].length;
+  },
+  getFieldHeight: function () {
+    return this._field.length;
   },
   getBarriersDensity: function () {
     return this._barriersDensity;
@@ -76,22 +78,17 @@ $.extend(GameField.prototype, {
     });
   },
   _generateHtmlField: function () {
-    var $field = $('<div></div>');
-    $field.addClass('game-field');
-
     var n = this._field.length;
     var m = this._field[0].length;
 
     var fieldDimension = n > m ? n : m;
 
-    $field.attr('data-field-dimension', fieldDimension);
+    this._$field.attr('data-field-dimension', fieldDimension);
 
     for (var i = 0; i < n; i++) {
       var $row = this._generateHtmlFieldRow(this._field[i]);
-      $field.append($row);
+      this._$field.append($row);
     }
-
-    this._$field = $field;
   },
   _generateHtmlFieldRow: function (row) {
     var $row = $('<div></div>');

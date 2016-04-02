@@ -10,7 +10,7 @@ function Bomberman(maxBombs) {
   this._bombs = 0;
 
   new Transform(this);
-  new RenderBomberman(this, settings.gameFieldTarget);
+  new RenderBomberman(this, settings.gameField);
 }
 
 Bomberman.prototype = Object.create(GameObject.prototype);

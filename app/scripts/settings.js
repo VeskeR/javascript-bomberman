@@ -1,7 +1,9 @@
-var gameFieldTarget = $('.game-field-wrapper');
+var gameField = $('.game-field');
 
 var settings = {
-  gameFieldTarget: gameFieldTarget,
+  gameField: gameField,
+  gameFieldWidth: 21,
+  gameFieldHeight: 21,
   cellTypes: {
     WALL: 0,
     GRASS: 1,
