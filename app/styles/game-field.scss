@@ -43,75 +43,11 @@
       }
     }
 
-    &[data-field-dimension='4'] {
-      .game-field__row::after {
-        padding-bottom: 25%;
-      }
-    }
-
-    &[data-field-dimension='5'] {
-      .game-field__row::after {
-        padding-bottom: 20%;
-      }
-    }
-
-    &[data-field-dimension='6'] {
-      .game-field__row::after {
-        padding-bottom: 16.66%;
-      }
-    }
-
-    &[data-field-dimension='7'] {
-      .game-field__row::after {
-        padding-bottom: 14.28%;
-      }
-    }
-
-    &[data-field-dimension='8'] {
-      .game-field__row::after {
-        padding-bottom: 12.5%;
-      }
-    }
-
-    &[data-field-dimension='9'] {
-      .game-field__row::after {
-        padding-bottom: 11.11%;
-      }
-    }
-
-    &[data-field-dimension='10'] {
-      .game-field__row::after {
-        padding-bottom: 10%;
-      }
-    }
-
-    &[data-field-dimension='11'] {
-      .game-field__row::after {
-        padding-bottom: 9.09%;
-      }
-    }
-
-    &[data-field-dimension='12'] {
-      .game-field__row::after {
-        padding-bottom: 8.33%;
-      }
-    }
-
-    &[data-field-dimension='13'] {
-      .game-field__row::after {
-        padding-bottom: 7.69%;
-      }
-    }
-
-    &[data-field-dimension='14'] {
-      .game-field__row::after {
-        padding-bottom: 7.14%;
-      }
-    }
-
-    &[data-field-dimension='15'] {
-      .game-field__row::after {
-        padding-bottom: 6.66%;
+    @for $i from 1 through 100 {
+      &[data-field-dimension='#{$i}'] {
+        .game-field__row::after {
+          padding-bottom: calc(100% / #{$i});
+        }
       }
     }
   }

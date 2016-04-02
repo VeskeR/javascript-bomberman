@@ -10,7 +10,7 @@ function GameManager() {
   this._gameField = new GameField(this._fieldTarget);
   this._player = new Bomberman();
 
-  this._gameField.generateField(15, 15);
+  this._gameField.generateField(21, 21);
   this._gameField.appendFieldToTarget();
 }
 
