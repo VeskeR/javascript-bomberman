@@ -8,6 +8,3 @@ var Bomberman = require('./bomberman');
 
 window.gameEngine = gameEngine;
 window.gameManager = gameManager;
-
-new Bomberman();
-new GameField();

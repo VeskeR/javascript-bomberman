@@ -1,12 +1,9 @@
 var gameEngine = require('./game-engine');
 
 function GameObject() {
-  this._timeCreated = 0;
-  this._lastUpdate = 0;
-  this._lastUpdateDelta = 0;
-
   this._timeCreated = Date.now();
   this._lastUpdate = this._timeCreated;
+  this._lastUpdateDelta = 0;
 
   this._addToGameEngine();
 }
