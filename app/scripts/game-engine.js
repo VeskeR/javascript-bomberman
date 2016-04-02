@@ -6,11 +6,11 @@ function GameEngine() {
   this._fps = 60;
   this._frameTickCount = 1000 / this._fps;
 
-  this._timeCreated = 0;
-  this._lastUpdate = 0;
+  this._timeCreated = Date.now();
+  this._lastUpdate = this._timeCreated;
   this._lastUpdateDelta = 0;
 
-  this._controller();
+  this._initGameLoop();
 }
 
 $.extend(GameEngine.prototype, {
@@ -37,12 +37,6 @@ $.extend(GameEngine.prototype, {
     if (k !== -1) {
       this._newGameObjects.splice(k, 1);
     }
-  },
-  _controller: function () {
-    this._timeCreated = Date.now();
-    this._lastUpdate = this._timeCreated;
-
-    this._initGameLoop();
   },
   _initGameLoop: function () {
     this._update();

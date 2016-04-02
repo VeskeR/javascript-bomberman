@@ -1,6 +1,8 @@
 var GameObject = require('./game-object');
 
 function Component(name, object) {
+  GameObject.apply(this, arguments);
+
   if (name && typeof name === 'string') {
     this._name = name;
   } else {
@@ -12,7 +14,7 @@ function Component(name, object) {
     throw new TypeError('Component ' + this._name + ': object to inject component into must be specified.');
   }
 
-  this._controller();
+  this._object[this._name] = this;
 }
 
 Component.prototype = Object.create(GameObject.prototype);
@@ -22,10 +24,6 @@ $.extend(Component.prototype, {
   destroy: function () {
     GameObject.prototype.destroy.apply(this, arguments);
     delete this._object[this._name];
-  },
-  _controller: function () {
-    GameObject.prototype._controller.apply(this, arguments);
-    this._object[this._name] = this;
   }
 });
 

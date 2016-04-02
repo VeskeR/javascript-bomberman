@@ -30,54 +30,6 @@
     &__cell {
       width: 100%;
 
-      // &[data-cells-count='5'] {
-      //   width: 25%;
-      // }
-      //
-      // &[data-cells-count='5'] {
-      //   width: 20%;
-      // }
-      //
-      // &[data-cells-count='6'] {
-      //   width: 16.66%;
-      // }
-      //
-      // &[data-cells-count='7'] {
-      //   width: 14.28%;
-      // }
-      //
-      // &[data-cells-count='8'] {
-      //   width: 12.5%;
-      // }
-      //
-      // &[data-cells-count='9'] {
-      //   width: 11.11%;
-      // }
-      //
-      // &[data-cells-count='10'] {
-      //   width: 10%;
-      // }
-      //
-      // &[data-cells-count='11'] {
-      //   width: 9.09%;
-      // }
-      //
-      // &[data-cells-count='12'] {
-      //   width: 8.33%;
-      // }
-      //
-      // &[data-cells-count='13'] {
-      //   width: 7.69%;
-      // }
-      //
-      // &[data-cells-count='14'] {
-      //   width: 7.14%;
-      // }
-      //
-      // &[data-cells-count='15'] {
-      //   width: 6.66%;
-      // }
-
       &[data-cell-type='barrier'] {
         background-color: $barrier-color;
       }
@@ -91,75 +43,11 @@
       }
     }
 
-    &[data-field-dimension='4'] {
-      &__row::after {
-        padding-bottom: 25%;
-      }
-    }
-
-    &[data-field-dimension='5'] {
-      &__row::after {
-        padding-bottom: 20%;
-      }
-    }
-
-    &[data-field-dimension='6'] {
-      &__row::after {
-        padding-bottom: 16.66%;
-      }
-    }
-
-    &[data-field-dimension='7'] {
-      &__row::after {
-        padding-bottom: 14.28%;
-      }
-    }
-
-    &[data-field-dimension='8'] {
-      &__row::after {
-        padding-bottom: 12.5%;
-      }
-    }
-
-    &[data-field-dimension='9'] {
-      &__row::after {
-        padding-bottom: 11.11%;
-      }
-    }
-
-    &[data-field-dimension='10'] {
-      &__row::after {
-        padding-bottom: 10%;
-      }
-    }
-
-    &[data-field-dimension='11'] {
-      &__row::after {
-        padding-bottom: 9.09%;
-      }
-    }
-
-    &[data-field-dimension='12'] {
-      &__row::after {
-        padding-bottom: 8.33%;
-      }
-    }
-
-    &[data-field-dimension='13'] {
-      &__row::after {
-        padding-bottom: 7.69%;
-      }
-    }
-
-    &[data-field-dimension='14'] {
-      &__row::after {
-        padding-bottom: 7.14%;
-      }
-    }
-
-    &[data-field-dimension='15'] {
-      &__row::after {
-        padding-bottom: 6.66%;
+    @for $i from 1 through 100 {
+      &[data-field-dimension='#{$i}'] {
+        .game-field__row::after {
+          padding-bottom: calc(100% / #{$i});
+        }
       }
     }
   }
