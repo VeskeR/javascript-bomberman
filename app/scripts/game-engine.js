@@ -10,7 +10,10 @@ function GameEngine() {
   this._lastUpdate = 0;
   this._lastUpdateDelta = 0;
 
-  this._controller();
+  this._timeCreated = Date.now();
+  this._lastUpdate = this._timeCreated;
+
+  this._initGameLoop();
 }
 
 $.extend(GameEngine.prototype, {
@@ -37,12 +40,6 @@ $.extend(GameEngine.prototype, {
     if (k !== -1) {
       this._newGameObjects.splice(k, 1);
     }
-  },
-  _controller: function () {
-    this._timeCreated = Date.now();
-    this._lastUpdate = this._timeCreated;
-
-    this._initGameLoop();
   },
   _initGameLoop: function () {
     this._update();

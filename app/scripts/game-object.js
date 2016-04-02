@@ -5,18 +5,15 @@ function GameObject() {
   this._lastUpdate = 0;
   this._lastUpdateDelta = 0;
 
-  this._controller();
+  this._timeCreated = Date.now();
+  this._lastUpdate = this._timeCreated;
+
+  this._addToGameEngine();
 }
 
 GameObject.prototype = {
   destroy: function () {
     this._removeFromGameEngine();
-  },
-  _controller: function () {
-    this._timeCreated = Date.now();
-    this._lastUpdate = this._timeCreated;
-
-    this._addToGameEngine();
   },
   _addToGameEngine: function () {
     gameEngine.addGameObject(this);
