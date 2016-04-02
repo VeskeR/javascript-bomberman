@@ -109,7 +109,7 @@ $.extend(GameField.prototype, {
   _generateHtmlFieldCell: function (cellType) {
     var $cell = $('<div></div>');
     $cell.addClass('game-field__cell');
-    $cell.attr('data-cell-type', CellTypes.getCellTypeName(cellType));
+    $cell.attr('data-cell-type', CellTypes.getCellTypeName(cellType).toLowerCase());
     return $cell;
   }
 });
