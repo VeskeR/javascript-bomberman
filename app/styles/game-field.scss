@@ -44,6 +44,18 @@
       }
     }
 
+    &__bomberman {
+      background-color: #8afb8f;
+
+      &--player {
+        background-color: #8afb8f;
+      }
+
+      &--enemy {
+        background-color: #ff5858;
+      }
+    }
+
     @for $i from 1 through 100 {
       &[data-field-dimension='#{$i}'] {
         .game-field__row::after {
