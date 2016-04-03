@@ -29,6 +29,17 @@ module.exports = function (grunt) {
         src: ['dist/']
       }
     },
+    concat: {
+      options: {
+        separator: ';'
+      },
+      dist: {
+        files: {
+          'dist/scripts/vendor/bower.js': ['bower_components/jquery/dist/jquery.min.js'],
+          'dist/styles/vendor/bower.css': []
+        }
+      }
+    },
     connect: {
       options: {
         port: 9000,
@@ -188,6 +199,7 @@ module.exports = function (grunt) {
     'sass:dist',
     'uglify:dist',
     'postcss:dist',
+    'concat:dist',
     'copy:dist',
     'processhtml:dist'
   ]);
