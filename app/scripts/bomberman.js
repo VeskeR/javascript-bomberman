@@ -1,16 +1,20 @@
+var gameEngine = require('./game-engine');
 var inputController = require('./input-controller');
 var GameObject = require('./game-object');
 var Transform = require('./transform');
 var RenderBomberman = require('./render-bomberman');
+var GameField = require('./game-field');
 var settings = require('./settings');
 
 function Bomberman() {
   GameObject.apply(this, arguments);
 
+  this._gameField = gameEngine.getGameObject(GameField);
+
   this._maxBombs = 1;
   this._bombs = 0;
 
-  this._movePause = 0.15;
+  this._movePause = 0.2;
   this._toNextMove = 0;
 
   new Transform(this);
@@ -47,8 +51,16 @@ $.extend(Bomberman.prototype, {
     moveVector.y = moveVector.x ? 0 : moveVector.y;
 
     if (moveVector.x || moveVector.y) {
-      this.Transform.move(moveVector);
-      this._toNextMove = this._movePause;
+      var currentPosition = this.Transform.getPosition();
+      var newPosition = {};
+
+      newPosition.x = currentPosition.x + moveVector.x;
+      newPosition.y = currentPosition.y + moveVector.y;
+
+      if (this._gameField.getCellTypeAt(newPosition.y, newPosition.x) === 'GRASS') {
+        this.Transform.moveTo(newPosition);
+        this._toNextMove = this._movePause;
+      }
     }
   }
 });
