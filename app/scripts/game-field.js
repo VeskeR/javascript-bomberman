@@ -29,6 +29,15 @@ $.extend(GameField.prototype, {
     this._generateDigitalField(n, m);
     this._generateHtmlField();
   },
+  getCellTypeAt: function (i, j) {
+    i = typeof i === 'number' ? i : -1;
+    j = typeof j === 'number' ? j : -1;
+    if (i < 0 || i > this.getFieldHeight() - 1 || j < 0 || j > this.getFieldWidth() - 1 || (i ^ 0) !== i || (j ^ 0) !== j) {
+      throw new RangeError('Game Field: i, j indexes must point to field cell.');
+    }
+
+    return settings.cellTypes.getCellTypeName(this._field[i][j]);
+  },
   getFieldWidth: function () {
     return this._field[0].length;
   },
