@@ -32,6 +32,13 @@ $.extend(Transform.prototype, {
     this._position.x += vector.x || 0;
     this._position.y += vector.y || 0;
     this._position.z += vector.z || 0;
+  },
+  moveTo: function (position) {
+    position = position || {};
+
+    this._position.x = position.x || 0;
+    this._position.y = position.y || 0;
+    this._position.z = position.z || 0;
   }
 });
 
