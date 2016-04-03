@@ -10,7 +10,7 @@ function Bomberman() {
   this._maxBombs = 1;
   this._bombs = 0;
 
-  this._movePause = 0.1;
+  this._movePause = 0.15;
   this._toNextMove = 0;
 
   new Transform(this);

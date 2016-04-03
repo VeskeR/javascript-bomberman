@@ -32,6 +32,7 @@ $.extend(InputController.prototype, {
   _keyboardEventHandler: function (e) {
     e = e || event;
     this._inputs[e.keyCode || e.which] = e.type === 'keydown';
+    e.preventDefault();
   }
 });
 
