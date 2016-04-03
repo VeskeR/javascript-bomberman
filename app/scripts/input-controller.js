@@ -1,7 +1,10 @@
 var GameObject = require('./game-object');
+var settings = require('./settings');
 
 function InputController() {
   GameObject.apply(this, arguments);
+
+  this._gameField = settings.gameField;
 
   this._inputs = [];
   this._keyMap = {
@@ -26,8 +29,8 @@ $.extend(InputController.prototype, {
   },
   _bindEvents: function () {
     var bindedKeyboardEventHandler = this._keyboardEventHandler.bind(this);
-    window.addEventListener('keydown', bindedKeyboardEventHandler);
-    window.addEventListener('keyup', bindedKeyboardEventHandler);
+    this._gameField.on('keydown', bindedKeyboardEventHandler);
+    this._gameField.on('keyup', bindedKeyboardEventHandler);
   },
   _keyboardEventHandler: function (e) {
     e = e || event;
