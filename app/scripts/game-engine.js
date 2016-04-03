@@ -15,7 +15,7 @@ function GameEngine() {
 
 $.extend(GameEngine.prototype, {
   init: function () {
-    initializator.createObjects();
+    initializator.init();
     this._initGameLoop();
   },
   getGameObject: function (type) {
