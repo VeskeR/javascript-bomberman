@@ -1,3 +1,5 @@
+var initializator = require('./initializator');
+
 function GameEngine() {
   this._gameObjects = [];
   this._newGameObjects = [];
@@ -9,13 +11,38 @@ function GameEngine() {
   this._timeCreated = Date.now();
   this._lastUpdate = this._timeCreated;
   this._lastUpdateDelta = 0;
-
-  this._initGameLoop();
 }
 
 $.extend(GameEngine.prototype, {
-  getGameObjects: function () {
-    return this._gameObjects;
+  init: function () {
+    initializator.createObjects();
+    this._initGameLoop();
+  },
+  getGameObject: function (type) {
+    if (type && typeof type === 'function') {
+      for (var i = 0; i < this._gameObjects.length; i++) {
+        var go = this._gameObjects[i];
+        if (go instanceof type) {
+          return go;
+        }
+      }
+      throw new TypeError('Not found game object of type ' + type.name);
+    } else {
+      return this._gameObjects[0];
+    }
+  },
+  getGameObjects: function (type) {
+    if (type && typeof type === 'function') {
+      var gos = [];
+      this._gameObjects.forEach(function (go) {
+        if (go instanceof type) {
+          gos.push(go);
+        }
+      });
+      return gos;
+    } else {
+      return this._gameObjects;
+    }
   },
   getUpdatableGameObjects: function () {
     return this._updatableGameObjects;
