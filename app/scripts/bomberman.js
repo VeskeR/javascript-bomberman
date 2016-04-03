@@ -1,3 +1,4 @@
+var inputController = require('./input-controller');
 var GameObject = require('./game-object');
 var Transform = require('./transform');
 var RenderBomberman = require('./render-bomberman');
@@ -8,6 +9,9 @@ function Bomberman() {
 
   this._maxBombs = 1;
   this._bombs = 0;
+
+  this._movePause = 0.1;
+  this._toNextMove = 0;
 
   new Transform(this);
   new RenderBomberman(this, settings.gameField);
@@ -30,6 +34,22 @@ $.extend(Bomberman.prototype, {
   },
   update: function () {
     this._update();
+    this._toNextMove -= this.getSecondsFromLastUpdate();
+    if (this._toNextMove <= 0) {
+      this._tryMove();
+    }
+  },
+  _tryMove: function () {
+    var moveVector = {
+      x: inputController.getKey('RIGHT') ? 1 : inputController.getKey('LEFT') ? -1 : 0,
+      y: inputController.getKey('UP') ? -1 : inputController.getKey('DOWN') ? 1 : 0
+    }
+    moveVector.y = moveVector.x ? 0 : moveVector.y;
+
+    if (moveVector.x || moveVector.y) {
+      this.Transform.move(moveVector);
+      this._toNextMove = this._movePause;
+    }
   }
 });
 

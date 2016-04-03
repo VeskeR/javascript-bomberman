@@ -20,11 +20,8 @@ InputController.prototype.constructor = InputController;
 $.extend(InputController.prototype, {
   getKey: function (keyName) {
     keyName = keyName || '';
-    var code = this._keyMap[keyName];
+    var code = this._keyMap[keyName.toUpperCase()];
     return code ? this._inputs[code] ? 1 : 0 : 0;
-  },
-  update: function () {
-    this._update();
   },
   _bindEvents: function () {
     var bindedKeyboardEventHandler = this._keyboardEventHandler.bind(this);
