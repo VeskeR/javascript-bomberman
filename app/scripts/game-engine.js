@@ -1,3 +1,5 @@
+var initializator = require('./initializator');
+
 function GameEngine() {
   this._gameObjects = [];
   this._newGameObjects = [];
@@ -9,11 +11,13 @@ function GameEngine() {
   this._timeCreated = Date.now();
   this._lastUpdate = this._timeCreated;
   this._lastUpdateDelta = 0;
-
-  this._init();
 }
 
 $.extend(GameEngine.prototype, {
+  init: function () {
+    initializator.createObjects();
+    this._initGameLoop();
+  },
   getGameObject: function (type) {
     if (type && typeof type === 'function') {
       for (var i = 0; i < this._gameObjects.length; i++) {
@@ -60,12 +64,6 @@ $.extend(GameEngine.prototype, {
     if (k !== -1) {
       this._newGameObjects.splice(k, 1);
     }
-  },
-  _init: function () {
-    var self = this;
-    setTimeout(function () {
-      self._initGameLoop();
-    }, 0);
   },
   _initGameLoop: function () {
     this._update();

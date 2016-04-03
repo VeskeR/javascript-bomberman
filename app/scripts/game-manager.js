@@ -32,6 +32,4 @@ $.extend(GameManager.prototype, {
   }
 });
 
-var gameManager = new GameManager();
-
-module.exports = gameManager;
+module.exports = GameManager;
