@@ -11,21 +11,28 @@ function RenderBomberman(object, target) {
   this.setElement(bomberman);
 
   this.appendElementToTarget();
-  this.render(
-    settings.gameFieldHeight,
-    settings.gameFieldWidth,
-    this._object.Transform.getPosition().x,
-    this._object.Transform.getPosition().y,
-    1,
-    1
-  );
+  this.render();
 }
 
 RenderBomberman.prototype = Object.create(Render.prototype);
 RenderBomberman.prototype.constructor = RenderBomberman;
 
 $.extend(RenderBomberman.prototype, {
-
+  render: function () {
+    Render.prototype.render.call(
+      this,
+      settings.gameFieldHeight,
+      settings.gameFieldWidth,
+      this._object.Transform.getPosition().x,
+      this._object.Transform.getPosition().y,
+      1,
+      1
+    )
+  },
+  update: function () {
+    this._update();
+    this.render();
+  }
 });
 
 module.exports = RenderBomberman;

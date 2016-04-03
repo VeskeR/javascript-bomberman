@@ -44,6 +44,10 @@
       }
     }
 
+    &__bomberman {
+      background-color: $gray-80;
+    }
+
     @for $i from 1 through 100 {
       &[data-field-dimension='#{$i}'] {
         .game-field__row::after {

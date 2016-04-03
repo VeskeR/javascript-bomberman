@@ -12,6 +12,8 @@ function GameManager() {
   this._gameField = new GameField();
   this._player = new Bomberman();
 
+  this._player.Transform.move({x: 1, y: 1});
+
   this._gameField.generateField(this._fieldHeight, this._fieldWidth);
 }
 
@@ -26,7 +28,7 @@ $.extend(GameManager.prototype, {
     return this._player;
   },
   update: function () {
-    GameObject.prototype._update.apply(this, arguments);
+    this._update();
   }
 });
 

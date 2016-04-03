@@ -9,6 +9,9 @@ function GameObject() {
 }
 
 GameObject.prototype = {
+  getSecondsFromLastUpdate: function () {
+    return this._lastUpdateDelta / 1000;
+  },
   destroy: function () {
     this._removeFromGameEngine();
   },

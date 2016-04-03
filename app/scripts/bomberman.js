@@ -29,7 +29,7 @@ $.extend(Bomberman.prototype, {
     }
   },
   update: function () {
-    GameObject.prototype._update.apply(this, arguments);
+    this._update();
   }
 });
 
