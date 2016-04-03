@@ -4,6 +4,13 @@ function InputController() {
   GameObject.apply(this, arguments);
 
   this._inputs = [];
+  this._keyMap = {
+    UP: 'W'.charCodeAt(0),
+    RIGHT: 'D'.charCodeAt(0),
+    DOWN: 'S'.charCodeAt(0),
+    LEFT: 'A'.charCodeAt(0),
+    SPACE: ' '.charCodeAt(0)
+  };
   this._bindEvents();
 }
 
@@ -11,6 +18,11 @@ InputController.prototype = Object.create(GameObject.prototype);
 InputController.prototype.constructor = InputController;
 
 $.extend(InputController.prototype, {
+  getKey: function (keyName) {
+    keyName = keyName || '';
+    var code = this._keyMap[keyName];
+    return code ? this._inputs[code] ? 1 : 0 : 0;
+  },
   update: function () {
     this._update();
   },
