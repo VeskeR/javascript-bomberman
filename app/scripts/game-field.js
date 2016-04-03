@@ -1,10 +1,10 @@
 var GameObject = require('./game-object');
 var settings = require('./settings');
 
-function GameField(gameField) {
+function GameField() {
   GameObject.apply(this, arguments);
 
-  this._$field = gameField || $('body');
+  this._$field = settings.gameField;
   this._field = [];
 
   this._barriersDensityDefault = 0.5;
