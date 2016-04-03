@@ -45,7 +45,15 @@
     }
 
     &__bomberman {
-      background-color: $gray-80;
+      background-color: #8afb8f;
+
+      &--player {
+        background-color: #8afb8f;
+      }
+
+      &--enemy {
+        background-color: #ff5858;
+      }
     }
 
     @for $i from 1 through 100 {
