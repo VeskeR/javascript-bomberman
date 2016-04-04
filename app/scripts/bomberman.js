@@ -18,8 +18,8 @@ function Bomberman() {
   this._actionPause = 0.2;
   this._toNextAction = 0;
 
-  new Transform(this);
-  new RenderGameObject(this);
+  this.addComponent(Transform);
+  this.addComponent(RenderGameObject);
 
   this.Render.getElement().addClass('game-field__bomberman');
 }

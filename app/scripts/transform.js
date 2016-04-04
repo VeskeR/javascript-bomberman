@@ -1,14 +1,12 @@
 var Component = require('./component');
 
-function Transform(object, position) {
+function Transform(object) {
   Component.call(this, 'Transform', object);
 
-  position = position || {};
-
   this._position = {
-    x: position.x || 0,
-    y: position.y || 0,
-    z: position.z || 0
+    x: 0,
+    y: 0,
+    z: 0
   }
 }
 

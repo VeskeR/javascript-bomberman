@@ -45,6 +45,10 @@ $.extend(Render.prototype, {
       height:  h * 100 / n + '%'
     });
   },
+  destroy: function () {
+    Component.prototype.destroy.apply(this, arguments);
+    this.removeElementFromTarget();
+  },
   _configureElement: function () {
     this._element.css({
       position: 'absolute',

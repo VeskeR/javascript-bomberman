@@ -14,10 +14,10 @@ function Bomb(bomberman, x, y) {
   this._lifeTime = 2;
   this._leftTime = this._lifeTime;
 
-  new Transform(this);
+  this.addComponent(Transform);
   this.Transform.setPosition({ x: x, y: y });
 
-  new RenderGameObject(this);
+  this.addComponent(RenderGameObject);
   this.Render.getElement().addClass('game-field__bomb');
 }
 
@@ -34,7 +34,6 @@ $.extend(Bomb.prototype, {
   },
   explode: function () {
     this.destroy();
-    console.log('exploded');
     this._bomberman.decreaseBombsCount();
   }
 });
