@@ -2,7 +2,7 @@ var Render = require('./render');
 var settings = require('./settings');
 
 function RenderGameObject(object) {
-  Render.call(this, 'RenderGameObject', object);
+  Render.call(this, object);
 
   var gameObject = $('<div></div>');
   gameObject.addClass('game-field__game-object');

@@ -1,38 +1,17 @@
-var Render = require('./render');
+var RenderGameObject = require('./render-game-object');
 var settings = require('./settings');
 
 function RenderBomberman(object) {
-  Render.call(this, object);
+  RenderGameObject.call(this, object);
 
-  var bomberman = $('<div></div>');
-  bomberman.addClass('game-field__bomberman');
-
-  this.setTarget(settings.gameField);
-  this.setElement(bomberman);
-
-  this.appendElementToTarget();
-  this.render();
+  this.getElement().addClass('game-field__bomberman');
 }
 
-RenderBomberman.prototype = Object.create(Render.prototype);
+RenderBomberman.prototype = Object.create(RenderGameObject.prototype);
 RenderBomberman.prototype.constructor = RenderBomberman;
 
 $.extend(RenderBomberman.prototype, {
-  render: function () {
-    Render.prototype.render.call(
-      this,
-      settings.gameFieldHeight,
-      settings.gameFieldWidth,
-      this._object.Transform.getPosition().x,
-      this._object.Transform.getPosition().y,
-      1,
-      1
-    )
-  },
-  update: function () {
-    this._update();
-    this.render();
-  }
+
 });
 
 module.exports = RenderBomberman;
