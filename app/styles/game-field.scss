@@ -51,10 +51,11 @@
     }
 
     &__game-object {
-
+      z-index: 1;
     }
 
     &__bomberman {
+      z-index: 3;
       background-color: #8afb8f;
 
       &--player {
@@ -64,6 +65,11 @@
       &--enemy {
         background-color: #ff5858;
       }
+    }
+
+    &__bomb {
+      z-index: 2;
+      background-color: #ff5858;
     }
 
     @for $i from 1 through 100 {

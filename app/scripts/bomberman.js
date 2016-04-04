@@ -2,7 +2,7 @@ var gameEngine = require('./game-engine');
 var inputController = require('./input-controller');
 var GameObject = require('./game-object');
 var Transform = require('./transform');
-var RenderBomberman = require('./render-bomberman');
+var RenderGameObject = require('./render-game-object');
 var GameField = require('./game-field');
 var Bomb = require('./bomb');
 var settings = require('./settings');
@@ -19,7 +19,9 @@ function Bomberman() {
   this._toNextAction = 0;
 
   new Transform(this);
-  new RenderBomberman(this);
+  new RenderGameObject(this);
+
+  this.Render.getElement().addClass('game-field__bomberman');
 }
 
 Bomberman.prototype = Object.create(GameObject.prototype);
