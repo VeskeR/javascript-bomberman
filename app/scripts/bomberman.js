@@ -47,6 +47,9 @@ $.extend(Bomberman.prototype, {
   setMaxBombs: function (newMaxBombs) {
     this._maxBombs = newMaxBombs && newMaxBombs > 0 ? newMaxBombs : 1;
   },
+  kill: function () {
+    this.destroy();
+  },
   update: function () {
     this._update();
     this._toNextAction -= this.getSecondsFromLastUpdate();

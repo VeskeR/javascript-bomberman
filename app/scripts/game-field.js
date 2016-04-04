@@ -39,6 +39,16 @@ $.extend(GameField.prototype, {
     // Invert x and y due to inconsistence in coordinates system
     return settings.cellTypes.getCellTypeName(this._field[y][x]);
   },
+  setGrassAt: function (x, y) {
+    x = typeof x === 'number' ? x : -1;
+    y = typeof y === 'number' ? y : -1;
+    if (x < 0 || x > this.getFieldHeight() - 1 || y < 0 || y > this.getFieldWidth() - 1 || (x ^ 0) !== x || (y ^ 0) !== y) {
+      throw new RangeError('Game Field: x, y indexes must point to field cell.');
+    }
+
+    // Invert x and y due to inconsistence in coordinates system
+    this._setCellTypeAt(y, x, 'GRASS');
+  },
   getFieldWidth: function () {
     return this._field[0].length;
   },
