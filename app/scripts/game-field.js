@@ -36,7 +36,8 @@ $.extend(GameField.prototype, {
       throw new RangeError('Game Field: i, j indexes must point to field cell.');
     }
 
-    return settings.cellTypes.getCellTypeName(this._field[i][j]);
+    // Invert i and j due to inconsistence in coordinates system
+    return settings.cellTypes.getCellTypeName(this._field[j][i]);
   },
   getFieldWidth: function () {
     return this._field[0].length;
