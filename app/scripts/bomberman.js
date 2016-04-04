@@ -26,6 +26,19 @@ Bomberman.prototype = Object.create(GameObject.prototype);
 Bomberman.prototype.constructor = Bomberman;
 
 $.extend(Bomberman.prototype, {
+  getBombsCount: function () {
+    return this._bombs;
+  },
+  increaseBombsCount: function () {
+    this._bombs++;
+    this._bombs = this._bombs >= 0 ? this._bombs : 0;
+    this._bombs = this._bombs <= this._maxBombs ? this._bombs : 0;
+  },
+  decreaseBombsCount: function () {
+    this._bombs--;
+    this._bombs = this._bombs >= 0 ? this._bombs : 0;
+    this._bombs = this._bombs <= this._maxBombs ? this._bombs : 0;
+  },
   getMaxBombs: function () {
     return this._maxBombs;
   },
@@ -68,9 +81,8 @@ $.extend(Bomberman.prototype, {
   },
   _placeBomb: function () {
     if (this._bombs < this._maxBombs) {
-      this._bombs++;
+      new Bomb(this, this.Transform.getPosition().x, this.Transform.getPosition().y);
     }
-    new Bomb(this.Transform.getPosition().x, this.Transform.getPosition().y);
   },
 });
 
