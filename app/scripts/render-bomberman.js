@@ -1,13 +1,13 @@
 var Render = require('./render');
 var settings = require('./settings');
 
-function RenderBomberman(object, target) {
+function RenderBomberman(object) {
   Render.call(this, 'RenderBomberman', object);
 
   var bomberman = $('<div></div>');
   bomberman.addClass('game-field__bomberman');
 
-  this.setTarget(target);
+  this.setTarget(settings.gameField);
   this.setElement(bomberman);
 
   this.appendElementToTarget();
