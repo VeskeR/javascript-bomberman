@@ -62,7 +62,8 @@ $.extend(Bomberman.prototype, {
     if (action.space) {
       this._placeBomb();
       this._toNextAction = this._actionPause;
-    } else if (action.x || action.y) {
+    }
+    if (action.x || action.y) {
       this._move(action);
     }
   },
