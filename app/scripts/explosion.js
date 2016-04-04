@@ -1,7 +1,6 @@
 var gameEngine = require('./game-engine');
 var GameObject = require('./game-object');
-var GameField = require('./game-field');
-var Bomberman;
+var GameManager;
 var Transform = require('./transform');
 var RenderGameObject = require('./render-game-object');
 var settings = require('./settings');
@@ -9,13 +8,13 @@ var settings = require('./settings');
 function Explosion(x, y) {
   GameObject.apply(this, arguments);
 
-  Bomberman = require('./bomberman');
+  GameManager = require('./game-manager');
 
   this._lifeTime = 0.5;
   this._leftTime = this._lifeTime;
 
-  this._gameField = gameEngine.getGameObject(GameField);
-  this._bombermans = gameEngine.getGameObjects(Bomberman);
+  this._gameManager = gameEngine.getGameObject(GameManager);
+  this._gameField = this._gameManager.getGameField();
 
   this.addComponent(Transform);
   this.Transform.setPosition({ x: x, y: y });
@@ -44,15 +43,18 @@ $.extend(Explosion.prototype, {
   _checkBombermans: function () {
     var self = this;
     var killed = [];
-    this._bombermans.forEach(function (bomberman) {
+    var bombermans = this._gameManager.getBombermans();
+
+    bombermans.forEach(function (bomberman) {
       if (bomberman.Transform.getPosition().x === self.Transform.getPosition().x &&
           bomberman.Transform.getPosition().y === self.Transform.getPosition().y) {
             killed.push(bomberman);
           }
     });
+
     killed.forEach(function (bomberman) {
+      self._gameManager.removeBomberman(bomberman);
       bomberman.kill();
-      self._bombermans.splice(self._bombermans.indexOf(bomberman), 1);
     });
   },
   _checkBarriers: function () {
