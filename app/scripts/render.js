@@ -1,7 +1,7 @@
 var Component = require('./component');
 
-function Render(name, object) {
-  Component.call(this, name || 'Render', object);
+function Render(object) {
+  Component.call(this, 'Render', object);
 
   this._target = null;
   this._element = null;
@@ -11,18 +11,18 @@ Render.prototype = Object.create(Component.prototype);
 Render.prototype.constructor = Render;
 
 $.extend(Render.prototype, {
+  getTarget: function () {
+    return this._target;
+  },
   setTarget: function (newTarget) {
     this._target = newTarget || $('body');
   },
-  getTarget: function () {
-    return this._target;
+  getElement: function () {
+    return this._element;
   },
   setElement: function (newElement) {
     this._element = newElement || $('<div></div>');
     this._configureElement();
-  },
-  getElement: function () {
-    return this._element;
   },
   appendElementToTarget: function () {
     this._target.append(this._element);
