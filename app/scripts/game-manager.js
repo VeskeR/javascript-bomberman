@@ -1,6 +1,7 @@
 var GameObject = require('./game-object');
 var GameField = require('./game-field');
 var Bomberman = require('./bomberman');
+var Player = require('./player');
 var settings = require('./settings');
 
 function GameManager() {
@@ -10,7 +11,7 @@ function GameManager() {
   this._fieldHeight = settings.gameFieldHeight;
 
   this._gameField = new GameField();
-  this._player = new Bomberman();
+  this._player = new Player();
   this._enemies = [
     // new Bomberman(),
     // new Bomberman(),
