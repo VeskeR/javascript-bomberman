@@ -56,20 +56,25 @@
 
     &__bomberman {
       z-index: 3;
-      background-color: #8afb8f;
+      background-color: $bomberman-player-color;
 
       &--player {
-        background-color: #8afb8f;
+        background-color: $bomberman-player-color;
       }
 
       &--enemy {
-        background-color: #ff5858;
+        background-color: $bomberman-enemy-color;
       }
     }
 
     &__bomb {
       z-index: 2;
-      background-color: $gray-60;
+      background-color: $bomb-color;
+    }
+
+    &__explosion {
+      z-index: 4;
+      background-color: $explosion-color;
     }
 
     @for $i from 1 through 100 {

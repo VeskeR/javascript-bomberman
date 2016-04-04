@@ -29,14 +29,25 @@ $.extend(GameField.prototype, {
     this._generateDigitalField(n, m);
     this._generateHtmlField();
   },
-  getCellTypeAt: function (i, j) {
-    i = typeof i === 'number' ? i : -1;
-    j = typeof j === 'number' ? j : -1;
-    if (i < 0 || i > this.getFieldHeight() - 1 || j < 0 || j > this.getFieldWidth() - 1 || (i ^ 0) !== i || (j ^ 0) !== j) {
-      throw new RangeError('Game Field: i, j indexes must point to field cell.');
+  getCellTypeNameAt: function (x, y) {
+    x = typeof x === 'number' ? x : -1;
+    y = typeof y === 'number' ? y : -1;
+    if (x < 0 || x > this.getFieldHeight() - 1 || y < 0 || y > this.getFieldWidth() - 1 || (x ^ 0) !== x || (y ^ 0) !== y) {
+      throw new RangeError('Game Field: x, y indexes must point to field cell.');
     }
 
-    return settings.cellTypes.getCellTypeName(this._field[i][j]);
+    // Invert x and y due to inconsistence in coordinates system
+    return settings.cellTypes.getCellTypeName(this._field[y][x]);
+  },
+  setGrassAt: function (x, y) {
+    x = typeof x === 'number' ? x : -1;
+    y = typeof y === 'number' ? y : -1;
+    if (x < 0 || x > this.getFieldHeight() - 1 || y < 0 || y > this.getFieldWidth() - 1 || (x ^ 0) !== x || (y ^ 0) !== y) {
+      throw new RangeError('Game Field: x, y indexes must point to field cell.');
+    }
+
+    // Invert x and y due to inconsistence in coordinates system
+    this._setCellTypeAt(y, x, 'GRASS');
   },
   getFieldWidth: function () {
     return this._field[0].length;
@@ -112,11 +123,18 @@ $.extend(GameField.prototype, {
 
     return $row;
   },
-  _generateHtmlFieldCell: function (cellType) {
+  _generateHtmlFieldCell: function (type) {
     var $cell = $('<div></div>');
     $cell.addClass('game-field__cell');
-    $cell.attr('data-cell-type', settings.cellTypes.getCellTypeName(cellType).toLowerCase());
+    $cell.attr('data-cell-type', settings.cellTypes.getCellTypeName(type).toLowerCase());
     return $cell;
+  },
+  _setCellTypeAt: function (i, j, typeName) {
+    this._field[i][j] = settings.cellTypes[typeName.toUpperCase()];
+    this._$field.find('.game-field__row').eq(i).find('.game-field__cell').eq(j).attr(
+      'data-cell-type',
+      typeName.toLowerCase()
+    );
   }
 });
 

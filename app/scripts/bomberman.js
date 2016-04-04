@@ -47,6 +47,9 @@ $.extend(Bomberman.prototype, {
   setMaxBombs: function (newMaxBombs) {
     this._maxBombs = newMaxBombs && newMaxBombs > 0 ? newMaxBombs : 1;
   },
+  kill: function () {
+    this.destroy();
+  },
   update: function () {
     this._update();
     this._toNextAction -= this.getSecondsFromLastUpdate();
@@ -77,7 +80,7 @@ $.extend(Bomberman.prototype, {
     newPosition.x = currentPosition.x + moveVector.x;
     newPosition.y = currentPosition.y + moveVector.y;
 
-    if (this._gameField.getCellTypeAt(newPosition.y, newPosition.x) === 'GRASS') {
+    if (this._gameField.getCellTypeNameAt(newPosition.x, newPosition.y) === 'GRASS') {
       this.Transform.moveTo(newPosition);
       this._toNextAction = this._actionPause;
     }
