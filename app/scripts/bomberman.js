@@ -77,7 +77,7 @@ $.extend(Bomberman.prototype, {
     newPosition.x = currentPosition.x + moveVector.x;
     newPosition.y = currentPosition.y + moveVector.y;
 
-    if (this._gameField.getCellTypeAt(newPosition.x, newPosition.y) === 'GRASS') {
+    if (this._gameField.getCellTypeNameAt(newPosition.x, newPosition.y) === 'GRASS') {
       this.Transform.moveTo(newPosition);
       this._toNextAction = this._actionPause;
     }

@@ -60,10 +60,10 @@ $.extend(Bomb.prototype, {
           x: bombPosition.x + dir.x * i,
           y: bombPosition.y + dir.y * i
         };
-        var cellType = self._gameField.getCellTypeAt(explosionPosition.x, explosionPosition.y);
-        if (cellType !== 'WALL') {
+        var cellTypeName = self._gameField.getCellTypeNameAt(explosionPosition.x, explosionPosition.y);
+        if (cellTypeName !== 'WALL') {
           new Explosion(explosionPosition.x, explosionPosition.y);
-          if (cellType === 'BARRIER') {
+          if (cellTypeName === 'BARRIER') {
             break;
           }
         } else {
