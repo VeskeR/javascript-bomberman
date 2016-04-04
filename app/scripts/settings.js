@@ -2,8 +2,8 @@ var gameField = $('.game-field');
 
 var settings = {
   gameField: gameField,
-  gameFieldWidth: 21,
-  gameFieldHeight: 21,
+  gameFieldWidth: 17,
+  gameFieldHeight: 17,
   spawnPositions: [
     function () { return { x: 1, y: 1 }},
     function () { return { x: 1, y: settings.gameFieldWidth - 2 }},
