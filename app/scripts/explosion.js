@@ -8,11 +8,11 @@ function Explosion() {
   GameObject.apply(this, arguments);
 }
 
- Explosion.prototype = Object.create(GameObject.prototype);
- Explosion.prototype.constructor = Explosion;
+Explosion.prototype = Object.create(GameObject.prototype);
+Explosion.prototype.constructor = Explosion;
 
- $.extend(Explosion.prototype, {
-   
- });
+$.extend(Explosion.prototype, {
+  
+});
 
 module.exports = Explosion;
