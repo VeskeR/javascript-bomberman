@@ -2,6 +2,7 @@ var gameEngine = require('./game-engine');
 var GameObject = require('./game-object');
 var Transform = require('./transform');
 var RenderGameObject = require('./render-game-object');
+var Bomb = require('./bomb');
 var GameField = require('./game-field');
 var settings = require('./settings');
 
@@ -44,6 +45,35 @@ $.extend(Bomberman.prototype, {
   },
   setMaxBombs: function (newMaxBombs) {
     this._maxBombs = newMaxBombs && newMaxBombs > 0 ? newMaxBombs : 1;
+  },
+  update: function () {
+    this._update();
+    this._toNextAction -= this.getSecondsFromLastUpdate();
+    if (this._toNextAction <= 0) {
+      this.doNextAction();
+    }
+  },
+  doNextAction: function () {
+    // Impelement this method in inherited class to perform bomberman's actions
+  },
+  move: function (moveVector) {
+    moveVector.y = moveVector.x ? 0 : moveVector.y;
+    var currentPosition = this.Transform.getPosition();
+    var newPosition = {};
+
+    newPosition.x = currentPosition.x + moveVector.x;
+    newPosition.y = currentPosition.y + moveVector.y;
+
+    if (this._gameField.getCellTypeNameAt(newPosition.x, newPosition.y) === 'GRASS') {
+      this.Transform.moveTo(newPosition);
+      this._toNextAction = this._actionPause;
+    }
+  },
+  placeBomb: function () {
+    if (this._bombs < this._maxBombs) {
+      new Bomb(this, this.Transform.getPosition().x, this.Transform.getPosition().y);
+    }
+    this._toNextAction = this._actionPause;
   },
   kill: function () {
     this.destroy();

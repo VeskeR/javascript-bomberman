@@ -56,8 +56,6 @@
 
     &__bomberman {
       z-index: 3;
-      background-color: $bomberman-player-color;
-
       &--player {
         background-color: $bomberman-player-color;
       }
