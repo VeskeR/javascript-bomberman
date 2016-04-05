@@ -1,9 +1,12 @@
-var GameObject = require('./game-object');
+var GameObject = require('../engine/core/game-object');
+
 var GameField = require('./game-field');
-var Bomberman = require('./bomberman');
-var Player = require('./player');
-var Enemy = require('./enemy');
-var settings = require('./settings');
+
+var Bomberman = require('../bomberman/bomberman');
+var Enemy = require('../bomberman/enemy');
+var Player = require('../bomberman/player');
+
+var settings = require('../controls/settings');
 
 function GameManager() {
   GameObject.apply(this, arguments);

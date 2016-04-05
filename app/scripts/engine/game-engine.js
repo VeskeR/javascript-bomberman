@@ -1,4 +1,4 @@
-var initializator = require('./initializator');
+var initializator = require('./core/initializator');
 
 function GameEngine() {
   this._gameObjects = [];

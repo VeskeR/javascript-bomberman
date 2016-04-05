@@ -1,5 +1,6 @@
-var GameObject = require('./game-object');
-var settings = require('./settings');
+var GameObject = require('../engine/core/game-object');
+
+var settings = require('../controls/settings');
 
 function GameField() {
   GameObject.apply(this, arguments);

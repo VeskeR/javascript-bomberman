@@ -1,4 +1,4 @@
-var gameEngine = require('./game-engine');
+var gameEngine = require('./engine/game-engine');
 gameEngine.init();
 
 window.gameEngine = gameEngine;

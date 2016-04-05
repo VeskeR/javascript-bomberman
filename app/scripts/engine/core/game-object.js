@@ -1,4 +1,4 @@
-var gameEngine = require('./game-engine');
+var gameEngine = require('../game-engine');
 
 function GameObject() {
   this._timeCreated = Date.now();

@@ -1,4 +1,4 @@
-var GameObject = require('./game-object');
+var GameObject = require('../core/game-object');
 
 function Component(name, object) {
   GameObject.apply(this, arguments);

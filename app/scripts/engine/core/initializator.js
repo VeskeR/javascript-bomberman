@@ -1,6 +1,4 @@
 var GameManager;
-var GameField;
-var Bomberman;
 
 function Initializator() {
 
@@ -15,7 +13,7 @@ $.extend(Initializator.prototype, {
     require('./input-controller');
   },
   _createGameObjects: function () {
-    GameManager = require('./game-manager');
+    GameManager = require('../../controls/game-manager');
 
     new GameManager();
   }

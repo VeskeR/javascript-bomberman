@@ -1,6 +1,8 @@
 var Bomberman = require('./bomberman');
-var Bomb = require('./bomb');
-var settings = require('./settings');
+
+var Bomb = require('../bomb/bomb');
+
+var settings = require('../controls/settings');
 
 function Enemy() {
   Bomberman.apply(this, arguments);

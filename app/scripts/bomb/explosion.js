@@ -1,14 +1,16 @@
-var gameEngine = require('./game-engine');
-var GameObject = require('./game-object');
+var gameEngine = require('../engine/game-engine');
+var Transform = require('../engine/components/transform');
+var GameObject = require('../engine/core/game-object');
+
+var RenderGameObject = require('../components/render-game-object');
+
 var GameManager;
-var Transform = require('./transform');
-var RenderGameObject = require('./render-game-object');
-var settings = require('./settings');
+var settings = require('../controls/settings');
 
 function Explosion(x, y) {
   GameObject.apply(this, arguments);
 
-  GameManager = require('./game-manager');
+  GameManager = require('../controls/game-manager');
 
   this._lifeTime = 0.5;
   this._leftTime = this._lifeTime;

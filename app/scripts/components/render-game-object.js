@@ -1,5 +1,6 @@
-var Render = require('./render');
-var settings = require('./settings');
+var Render = require('../engine/components/render');
+
+var settings = require('../controls/settings');
 
 function RenderGameObject(object) {
   Render.call(this, object);

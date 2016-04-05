@@ -1,10 +1,13 @@
-var gameEngine = require('./game-engine');
-var GameObject = require('./game-object');
-var Transform = require('./transform');
-var RenderGameObject = require('./render-game-object');
-var Bomb = require('./bomb');
-var GameField = require('./game-field');
-var settings = require('./settings');
+var gameEngine = require('../engine/game-engine');
+var Transform = require('../engine/components/transform');
+var GameObject = require('../engine/core/game-object');
+
+var Bomb = require('../bomb/bomb');
+
+var RenderGameObject = require('../components/render-game-object');
+
+var GameField = require('../controls/game-field');
+var settings = require('../controls/settings');
 
 function Bomberman() {
   GameObject.apply(this, arguments);
