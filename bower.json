@@ -1,5 +1,6 @@
 {
   "name": "javascript-bomberman",
+  "version": "1.0.0",
   "description": "Front-end realization of bomberman game",
   "main": "",
   "authors": [
