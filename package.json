@@ -1,7 +1,7 @@
 {
   "name": "javascript-bomberman",
-  "version": "0.0.0",
-  "description": "Front-end realization of bomberman game.",
+  "version": "1.0.0",
+  "description": "Front-end realization of bomberman game",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/VeskeR/javascript-bomberman.git"
